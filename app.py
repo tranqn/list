@@ -8,15 +8,17 @@ db = SQLAlchemy(app)
 
 class Certification(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    certification_name = db.Column(db.String(80),nullable=False)
+    certificate_name = db.Column(db.String(80),nullable=False)
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    certificates = Certification.query.all()
+    
+    return render_template('index.html',certificates=certificates)
 
 @app.route("/add")
 def add():
-    name = Certification(text=request.form['certification_name'])
+    name = Certification(text=request.form['certificate_name'])
     db.session.add(name)
     db.session.commit()
     

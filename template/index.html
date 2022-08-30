@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pexon</title>
+    </head>
+    <body>
+        <h1>Hello Pexonian, trage hier deine Zertifizierungen ein!</h1>
+
+    <div>
+        <form action="/add" method="PODT"">
+            <input type="text" name="certificate_name">
+            <input type="submit">
+        </form>
+    </div>
+    <div>
+        <ul>
+            {% for certificates in certificates %}
+            <li>{certificates.text}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
