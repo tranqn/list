@@ -13,17 +13,15 @@ class Certification(db.Model):
 @app.route("/")
 def index():
     certificates = Certification.query.all()
-    
-    return render_template('index.html',certificates=certificates)
+    return render_template('index.html', certificates=certificates)
 
-@app.route("/add")
+@app.route("/add", methods=['POST'])
 def add():
-    name = Certification(text=request.form['certificate_name'])
+    name = Certification(certificate_name=request.form['certificate_name'])
     db.session.add(name)
     db.session.commit()
-    
     return redirect(url_for('index'))
 
 
-if __name__ == "__main":
+if __name__ == "__main__":
     app.run(debug=True)

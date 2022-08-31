@@ -8,16 +8,17 @@
         <h1>Hello Pexonian, trage hier deine Zertifizierungen ein!</h1>
 
     <div>
-        <form action="/add" method="PODT"">
+        <form action="/add" method="POST">
             <input type="text" name="certificate_name">
             <input type="submit">
         </form>
     </div>
     <div>
         <ul>
-            {% for certificates in certificates %}
-            <li>{certificates.text}</li>
+            {% for x in certificates %}
+            <li>{{ x.certificate_name }}</li>
             {% endfor %}
         </ul>
+    </div>
     </body>
 </html>
